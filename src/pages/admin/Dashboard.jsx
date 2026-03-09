@@ -12,7 +12,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/stats')
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/stats`)
         setStats(response.data)
       } catch (err) {
         console.error('Failed to load stats', err)
