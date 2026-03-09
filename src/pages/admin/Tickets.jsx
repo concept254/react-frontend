@@ -12,7 +12,7 @@ function AdminTickets() {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await axios.get('http://${import.meta.env.VITE_API_URL}/api/admin/tickets')
+        const response = await axios.get('https://${import.meta.env.VITE_API_URL}/api/admin/tickets')
         setTickets(response.data)
       } catch (err) {
         console.error('Failed to load tickets', err)
@@ -26,7 +26,7 @@ function AdminTickets() {
   const handleDeleteTicket = async (tid, title) => {
     if (!window.confirm(`Are you sure you want to delete "${title}"?`)) return
     try {
-      await axios.delete(`http://${import.meta.env.VITE_API_URL}/api/admin/tickets/${tid}`)
+      await axios.delete(`https://${import.meta.env.VITE_API_URL}/api/admin/tickets/${tid}`)
       setTickets(tickets.filter(t => t.tid !== tid))
     } catch (err) {
       console.error('Failed to delete ticket', err)

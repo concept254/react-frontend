@@ -21,7 +21,7 @@ function NewTicket() {
     }
     setSubmitting(true)
     try {
-      const response = await axios.post('http://${import.meta.env.VITE_API_URL}/api/tickets/create', {
+      const response = await axios.post('https://${import.meta.env.VITE_API_URL}/api/tickets/create', {
         title,
         description,
         category,

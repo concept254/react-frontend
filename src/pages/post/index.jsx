@@ -22,8 +22,8 @@ function Post() {
     const fetchPostAndComments = async () => {
       try {
         const [postRes, commentsRes] = await Promise.all([
-          axios.get(`http://${import.meta.env.VITE_API_URL}/api/get/post/${pid}`),
-          axios.get(`http://${import.meta.env.VITE_API_URL}/api/get/comments/${pid}`)
+          axios.get(`https://${import.meta.env.VITE_API_URL}/api/get/post/${pid}`),
+          axios.get(`https://${import.meta.env.VITE_API_URL}/api/get/comments/${pid}`)
         ])
         setPost(postRes.data)
         setComments(commentsRes.data)
@@ -39,7 +39,7 @@ function Post() {
 
   const handleLike = async () => {
     try {
-      const response = await axios.put(`http://${import.meta.env.VITE_API_URL}/api/post/like/${pid}`)
+      const response = await axios.put(`https://${import.meta.env.VITE_API_URL}/api/post/like/${pid}`)
       setPost(response.data)    // update post with new likes count
     } catch (err) {
       console.error('Failed to like post', err)
@@ -50,7 +50,7 @@ function Post() {
     if (!newComment.trim()) return
     setSubmitting(true)
     try {
-      const response = await axios.post('http://${import.meta.env.VITE_API_URL}/api/post/comment', {
+      const response = await axios.post('https://${import.meta.env.VITE_API_URL}/api/post/comment', {
         comment: newComment,
         author: user.username,
         user_id: user.uid,
@@ -68,7 +68,7 @@ function Post() {
   const handleDelete = async () => {
     if (!window.confirm('Are you sure you want to delete this post?')) return
     try {
-      await axios.delete(`http://${import.meta.env.VITE_API_URL}/api/post/delete/${pid}`)
+      await axios.delete(`https://${import.meta.env.VITE_API_URL}/api/post/delete/${pid}`)
       navigate('/landing')    // redirect after delete
     } catch (err) {
       setError('Failed to delete post')
@@ -83,7 +83,7 @@ function Post() {
 
   const handleEditSave = async () => {
     try {
-      const response = await axios.put(`http://${import.meta.env.VITE_API_URL}/api/post/edit/${pid}`, {
+      const response = await axios.put(`https://${import.meta.env.VITE_API_URL}/api/post/edit/${pid}`, {
         title: editTitle,
         body: editBody
       })
