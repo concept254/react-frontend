@@ -21,8 +21,8 @@ function ClientTicketView() {
     const fetchTicket = async () => {
       try {
         const [ticketRes, messagesRes] = await Promise.all([
-          axios.get(`https://${import.meta.env.VITE_API_URL}/api/tickets/${tid}`),
-          axios.get(`https://${import.meta.env.VITE_API_URL}/api/tickets/${tid}/messages`)
+          axios.get(`${import.meta.env.VITE_API_URL}/api/tickets/${tid}`),
+          axios.get(`${import.meta.env.VITE_API_URL}/api/tickets/${tid}/messages`)
         ])
         setTicket(ticketRes.data)
         setMessages(messagesRes.data)
@@ -39,7 +39,7 @@ function ClientTicketView() {
     if (!newMessage.trim()) return
     setSubmitting(true)
     try {
-      const response = await axios.post(`https://${import.meta.env.VITE_API_URL}/api/tickets/${tid}/messages`, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/tickets/${tid}/messages`, {
         sender_id: user.uid,
         message: newMessage
       })
@@ -55,7 +55,7 @@ function ClientTicketView() {
   const handleCloseTicket = async () => {
     if (!window.confirm('Are you sure you want to close this ticket?')) return
     try {
-      const response = await axios.put(`https://${import.meta.env.VITE_API_URL}/api/tickets/${tid}/close`)
+      const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/tickets/${tid}/close`)
       setTicket(response.data)
       setShowReview(true)
     } catch (err) {

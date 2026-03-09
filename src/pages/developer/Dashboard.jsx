@@ -37,8 +37,8 @@ function DeveloperDashboard() {
       try {
         const [openRes, myRes, notifRes] = await Promise.all([
           axios.get(`${import.meta.env.VITE_API_URL}/api/tickets`),
-          axios.get(`https://${import.meta.env.VITE_API_URL}/api/tickets/developer/${user.uid}`),
-          axios.get(`https://${import.meta.env.VITE_API_URL}/api/notifications/${user.uid}`)
+          axios.get(`${import.meta.env.VITE_API_URL}/api/tickets/developer/${user.uid}`),
+          axios.get(`${import.meta.env.VITE_API_URL}/api/notifications/${user.uid}`)
         ])
         setOpenTickets(openRes.data)
         setMyTickets(myRes.data)
@@ -54,7 +54,7 @@ function DeveloperDashboard() {
 
   const handlePickUpTicket = async (tid) => {
     try {
-      await axios.put(`https://${import.meta.env.VITE_API_URL}/api/tickets/${tid}/assign`, {
+      await axios.put(`${import.meta.env.VITE_API_URL}/api/tickets/${tid}/assign`, {
         developer_id: user.uid
       })
       // Move ticket from open to my tickets

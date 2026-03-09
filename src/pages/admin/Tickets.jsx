@@ -26,7 +26,7 @@ function AdminTickets() {
   const handleDeleteTicket = async (tid, title) => {
     if (!window.confirm(`Are you sure you want to delete "${title}"?`)) return
     try {
-      await axios.delete(`https://${import.meta.env.VITE_API_URL}/api/admin/tickets/${tid}`)
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/admin/tickets/${tid}`)
       setTickets(tickets.filter(t => t.tid !== tid))
     } catch (err) {
       console.error('Failed to delete ticket', err)

@@ -15,7 +15,7 @@ function Navbar() {
     const fetchUnread = async () => {
       if (!user) return
       try {
-        const response = await axios.get(`https://${import.meta.env.VITE_API_URL}/api/notifications/${user.uid}`)
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/notifications/${user.uid}`)
         setUnreadCount(response.data.filter(n => !n.is_read).length)
       } catch (err) {
         console.error('Failed to fetch notifications', err)

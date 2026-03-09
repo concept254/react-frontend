@@ -24,7 +24,7 @@ function AdminUsers() {
 
   const handleRoleChange = async (uid, newRole) => {
     try {
-      const response = await axios.put(`https://${import.meta.env.VITE_API_URL}/api/admin/users/${uid}/role`, {
+      const response = await axios.put(`${import.meta.env.VITE_API_URL}/api/admin/users/${uid}/role`, {
         role: newRole
       })
       setUsers(users.map(u => u.uid === uid ? { ...u, role: response.data.role } : u))
@@ -36,7 +36,7 @@ function AdminUsers() {
   const handleDeleteUser = async (uid, username) => {
     if (!window.confirm(`Are you sure you want to delete ${username}?`)) return
     try {
-      await axios.delete(`https://${import.meta.env.VITE_API_URL}/api/admin/users/${uid}`)
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/admin/users/${uid}`)
       setUsers(users.filter(u => u.uid !== uid))
     } catch (err) {
       console.error('Failed to delete user', err)

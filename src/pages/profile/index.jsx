@@ -12,7 +12,7 @@ function Profile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`https://${import.meta.env.VITE_API_URL}/api/get/userprofile/${user.uid}`)
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/get/userprofile/${user.uid}`)
         setPosts(response.data)
       } catch (err) {
         console.error('Failed to load profile', err)
