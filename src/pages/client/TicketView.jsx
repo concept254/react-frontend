@@ -65,7 +65,7 @@ function ClientTicketView() {
 
   const handleSubmitReview = async () => {
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/api/reviews/create', {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/reviews/create`, {
         ticket_id: tid,
         reviewer_id: user.uid,
         reviewee_id: ticket.developer_id,

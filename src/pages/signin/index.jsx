@@ -15,7 +15,7 @@ function SignIn() {
   const handleSignIn = async () => {
     setError(null)
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/signin', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/signin`, {
         email,
         pwd
       })
