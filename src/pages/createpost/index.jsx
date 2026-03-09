@@ -31,7 +31,7 @@ function CreatePost() {
 
     setSubmitting(true)
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/post/createpost', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/post/createpost`, {
         title,
         body,
         user_id: user.uid,
