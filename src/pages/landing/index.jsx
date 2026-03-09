@@ -13,6 +13,7 @@ function Landing() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        // global API URL is set in .env.local, so we can use import.meta.env.VITE_API_URL
         const response = await axios.get('http://${import.meta.env.VITE_API_URL}/api/get/allposts')
         setPosts(response.data)
       } catch (err) {
