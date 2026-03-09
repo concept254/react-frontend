@@ -11,7 +11,7 @@ function Developers() {
   useEffect(() => {
     const fetchDevelopers = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/users/developers')
+        const response = await axios.get('http://${import.meta.env.VITE_API_URL}/api/users/developers')
         setDevelopers(response.data)
       } catch (err) {
         console.error('Failed to load developers', err)

@@ -35,8 +35,8 @@ function ClientDashboard() {
     const fetchData = async () => {
       try {
         const [ticketsRes, notifRes] = await Promise.all([
-          axios.get(`http://localhost:4000/api/tickets/client/${user.uid}`),
-          axios.get(`http://localhost:4000/api/notifications/${user.uid}`)
+          axios.get(`http://${import.meta.env.VITE_API_URL}/api/tickets/client/${user.uid}`),
+          axios.get(`http://${import.meta.env.VITE_API_URL}/api/notifications/${user.uid}`)
         ])
         setTickets(ticketsRes.data)
         setNotifications(notifRes.data.filter(n => !n.is_read))
@@ -230,7 +230,7 @@ function ClientDashboard() {
             ))}
           </div>
         )}
-        
+
       </main>
 
   )

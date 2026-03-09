@@ -18,8 +18,8 @@ function DeveloperTicketView() {
     const fetchTicket = async () => {
       try {
         const [ticketRes, messagesRes] = await Promise.all([
-          axios.get(`http://localhost:4000/api/tickets/${tid}`),
-          axios.get(`http://localhost:4000/api/tickets/${tid}/messages`)
+          axios.get(`http://${import.meta.env.VITE_API_URL}/api/tickets/${tid}`),
+          axios.get(`http://${import.meta.env.VITE_API_URL}/api/tickets/${tid}/messages`)
         ])
         setTicket(ticketRes.data)
         setMessages(messagesRes.data)
@@ -36,7 +36,7 @@ function DeveloperTicketView() {
     if (!newMessage.trim()) return
     setSubmitting(true)
     try {
-      const response = await axios.post(`http://localhost:4000/api/tickets/${tid}/messages`, {
+      const response = await axios.post(`http://${import.meta.env.VITE_API_URL}/api/tickets/${tid}/messages`, {
         sender_id: user.uid,
         message: newMessage
       })
@@ -52,7 +52,7 @@ function DeveloperTicketView() {
   const handleResolve = async () => {
     if (!window.confirm('Mark this ticket as resolved?')) return
     try {
-      const response = await axios.put(`http://localhost:4000/api/tickets/${tid}/resolve`)
+      const response = await axios.put(`http://${import.meta.env.VITE_API_URL}/api/tickets/${tid}/resolve`)
       setTicket(response.data)
     } catch (err) {
       console.error('Failed to resolve ticket', err)

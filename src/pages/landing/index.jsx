@@ -13,7 +13,7 @@ function Landing() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get('http://localhost:4000/api/get/allposts')
+        const response = await axios.get('http://${import.meta.env.VITE_API_URL}/api/get/allposts')
         setPosts(response.data)
       } catch (err) {
         setError('Failed to load posts')

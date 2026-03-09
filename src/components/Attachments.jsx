@@ -12,7 +12,7 @@ function Attachments({ tid }) {
   useEffect(() => {
     const fetchAttachments = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/tickets/${tid}/attachments`)
+        const response = await axios.get(`http://${import.meta.env.VITE_API_URL}/api/tickets/${tid}/attachments`)
         setAttachments(response.data)
       } catch (err) {
         console.error('Failed to load attachments', err)
@@ -38,7 +38,7 @@ function Attachments({ tid }) {
 
     try {
       const response = await axios.post(
-        `http://localhost:4000/api/tickets/${tid}/attachments`,
+        `http://${import.meta.env.VITE_API_URL}/api/tickets/${tid}/attachments`,
         formData,
         { headers: { 'Content-Type': 'multipart/form-data' } }
       )
@@ -53,7 +53,7 @@ function Attachments({ tid }) {
   const handleDelete = async (aid, filename) => {
     if (!window.confirm(`Delete ${filename}?`)) return
     try {
-      await axios.delete(`http://localhost:4000/api/tickets/attachments/${aid}`)
+      await axios.delete(`http://${import.meta.env.VITE_API_URL}/api/tickets/attachments/${aid}`)
       setAttachments(attachments.filter(a => a.aid !== aid))
     } catch (err) {
       console.error('Failed to delete attachment', err)
@@ -138,7 +138,7 @@ function Attachments({ tid }) {
               {/* Preview or icon */}
               {isImage(attachment.mimetype) ? (
                 <img
-                  src={`http://localhost:4000/uploads/${attachment.filename}`}
+                  src={`http://${import.meta.env.VITE_API_URL}/uploads/${attachment.filename}`}
                   alt={attachment.originalname}
                   className="w-12 h-12 rounded object-cover flex-shrink-0"
                 />
@@ -161,7 +161,7 @@ function Attachments({ tid }) {
               {/* Actions */}
               <div className="flex items-center gap-2 flex-shrink-0">
                 <a
-                  href={`http://localhost:4000/uploads/${attachment.filename}`}
+                  href={`http://${import.meta.env.VITE_API_URL}/uploads/${attachment.filename}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"

@@ -28,7 +28,7 @@ function SignUp() {
       return
     }
     try {
-      await axios.post('http://localhost:4000/api/auth/signup', {
+      await axios.post('http://${import.meta.env.VITE_API_URL}/api/auth/signup', {
         username,
         email,
         pwd,

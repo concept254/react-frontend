@@ -12,7 +12,7 @@ function Notifications() {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/notifications/${user.uid}`)
+        const response = await axios.get(`http://${import.meta.env.VITE_API_URL}/api/notifications/${user.uid}`)
         setNotifications(response.data)
       } catch (err) {
         console.error('Failed to load notifications', err)
@@ -25,7 +25,7 @@ function Notifications() {
 
   const handleMarkAsRead = async (nid) => {
     try {
-      await axios.put(`http://localhost:4000/api/notifications/${nid}/read`)
+      await axios.put(`http://${import.meta.env.VITE_API_URL}/api/notifications/${nid}/read`)
       setNotifications(notifications.map(n =>
         n.nid === nid ? { ...n, is_read: true } : n
       ))
@@ -38,7 +38,7 @@ function Notifications() {
     try {
       const unread = notifications.filter(n => !n.is_read)
       await Promise.all(unread.map(n =>
-        axios.put(`http://localhost:4000/api/notifications/${n.nid}/read`)
+        axios.put(`http://${import.meta.env.VITE_API_URL}/api/notifications/${n.nid}/read`)
       ))
       setNotifications(notifications.map(n => ({ ...n, is_read: true })))
     } catch (err) {

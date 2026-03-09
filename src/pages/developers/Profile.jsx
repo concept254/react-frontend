@@ -14,7 +14,7 @@ function DeveloperProfile() {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/users/developer/${uid}`)
+        const response = await axios.get(`http://${import.meta.env.VITE_API_URL}/api/users/developer/${uid}`)
         setData(response.data)
       } catch (err) {
         console.error('Failed to load profile', err)
