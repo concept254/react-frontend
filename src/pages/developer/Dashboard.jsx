@@ -36,7 +36,7 @@ function DeveloperDashboard() {
     const fetchData = async () => {
       try {
         const [openRes, myRes, notifRes] = await Promise.all([
-          axios.get('https://${import.meta.env.VITE_API_URL}/api/tickets'),
+          axios.get(`${import.meta.env.VITE_API_URL}/api/tickets'),
           axios.get(`https://${import.meta.env.VITE_API_URL}/api/tickets/developer/${user.uid}`),
           axios.get(`https://${import.meta.env.VITE_API_URL}/api/notifications/${user.uid}`)
         ])

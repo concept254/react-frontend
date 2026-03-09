@@ -12,7 +12,7 @@ function AdminTickets() {
   useEffect(() => {
     const fetchTickets = async () => {
       try {
-        const response = await axios.get('https://${import.meta.env.VITE_API_URL}/api/admin/tickets')
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/tickets')
         setTickets(response.data)
       } catch (err) {
         console.error('Failed to load tickets', err)

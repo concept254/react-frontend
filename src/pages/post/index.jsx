@@ -50,7 +50,7 @@ function Post() {
     if (!newComment.trim()) return
     setSubmitting(true)
     try {
-      const response = await axios.post('https://${import.meta.env.VITE_API_URL}/api/post/comment', {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/post/comment', {
         comment: newComment,
         author: user.username,
         user_id: user.uid,

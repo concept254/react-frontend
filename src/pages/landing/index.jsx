@@ -14,7 +14,7 @@ function Landing() {
     const fetchPosts = async () => {
       try {
         // global API URL is set in .env.local, so we can use import.meta.env.VITE_API_URL
-        const response = await axios.get('https://${import.meta.env.VITE_API_URL}/api/get/allposts')
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/get/allposts')
         setPosts(response.data)
       } catch (err) {
         setError('Failed to load posts')

@@ -11,7 +11,7 @@ function AdminUsers() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('https://${import.meta.env.VITE_API_URL}/api/admin/users')
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/admin/users')
         setUsers(response.data)
       } catch (err) {
         console.error('Failed to load users', err)
