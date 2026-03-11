@@ -4,8 +4,9 @@ const ThemeContext = createContext(null)
 
 export function ThemeProvider({ children }) {
   const [darkMode, setDarkMode] = useState(() => {
-    // Check localStorage for saved preference
-    return localStorage.getItem('theme') === 'dark'
+    const saved = localStorage.getItem('theme')
+    // If user has a saved preference use it, otherwise default to dark
+    return saved ? saved === 'dark' : true
   })
 
   useEffect(() => {
